@@ -105,11 +105,11 @@ export default function TasksPage() {
         </div>
         <div>
           <Dialog open={open} onOpenChange={setOpen}>
-            <DialogTrigger asChild>
+            <DialogTrigger render={
               <Button>
                 <Plus className="mr-2 h-4 w-4" /> New Task
               </Button>
-            </DialogTrigger>
+            } />
             <DialogContent>
               <DialogHeader>
                 <DialogTitle>Create New Task</DialogTitle>
@@ -128,7 +128,7 @@ export default function TasksPage() {
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="project">Project</Label>
-                  <Select value={projectId} onValueChange={setProjectId} required>
+                  <Select value={projectId} onValueChange={(val) => setProjectId(val || "")} required>
                     <SelectTrigger>
                       <SelectValue placeholder="Select a project" />
                     </SelectTrigger>
@@ -142,7 +142,7 @@ export default function TasksPage() {
                 {projectId && (
                   <div className="space-y-2">
                     <Label htmlFor="assignee">Assign To (Optional)</Label>
-                    <Select value={assignedToId} onValueChange={setAssignedToId}>
+                    <Select value={assignedToId} onValueChange={(val) => setAssignedToId(val || "unassigned")}>
                       <SelectTrigger>
                         <SelectValue placeholder="Select team member" />
                       </SelectTrigger>
@@ -158,7 +158,7 @@ export default function TasksPage() {
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="priority">Priority</Label>
-                    <Select value={priority} onValueChange={setPriority}>
+                    <Select value={priority} onValueChange={(val) => setPriority(val || "MEDIUM")}>
                       <SelectTrigger>
                         <SelectValue placeholder="Select priority" />
                       </SelectTrigger>

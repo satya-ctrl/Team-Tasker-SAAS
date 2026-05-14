@@ -138,11 +138,11 @@ export default function ProjectDetailsPage() {
             <CardHeader className="flex flex-row items-center justify-between">
               <CardTitle>Team Members</CardTitle>
               <Dialog open={open} onOpenChange={setOpen}>
-                <DialogTrigger asChild>
+                <DialogTrigger render={
                   <Button variant="outline" size="sm">
                     <UserPlus className="mr-2 h-4 w-4" /> Add
                   </Button>
-                </DialogTrigger>
+                } />
                 <DialogContent>
                   <DialogHeader>
                     <DialogTitle>Invite to Project</DialogTitle>

@@ -100,10 +100,10 @@ export default function DashboardLayout({
         <header className="h-16 bg-white border-b flex items-center justify-between px-4 md:px-8 shrink-0">
           <div className="flex items-center gap-4">
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
-              <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="md:hidden">
-                  <Menu className="h-6 w-6" />
-                </Button>
+              <SheetTrigger 
+                render={<Button variant="ghost" size="icon" className="md:hidden" />}
+              >
+                <Menu className="h-6 w-6" />
               </SheetTrigger>
               <SheetContent side="left" className="p-0 bg-slate-900 border-r-slate-800 w-64 flex flex-col">
                 <SidebarContent />

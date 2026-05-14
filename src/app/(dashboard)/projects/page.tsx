@@ -73,11 +73,11 @@ export default function ProjectsPage() {
         </div>
         <div>
           <Dialog open={open} onOpenChange={setOpen}>
-            <DialogTrigger asChild>
+            <DialogTrigger render={
               <Button>
                 <Plus className="mr-2 h-4 w-4" /> New Project
               </Button>
-            </DialogTrigger>
+            } />
             <DialogContent>
               <DialogHeader>
                 <DialogTitle>Create New Project</DialogTitle>
