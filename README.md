@@ -1,29 +1,44 @@
-# Team Task Manager
+# 🚀 TeamTasker | Modern Collaborative Project Management
 
-A powerful, collaborative task and project management platform built for modern teams.
+TeamTasker is a premium, full-stack SaaS platform designed for agile teams to manage projects, track tasks, and collaborate in real-time. Built with a focus on speed, security, and a beautiful user experience.
 
-## Features
+![TeamTasker Dashboard](public/next.svg) <!-- Replace with a real screenshot if available -->
 
-- **Authentication System:** Secure JWT-based authentication with bcrypt password hashing.
-- **Role-Based Access Control (RBAC):** Admin and Member roles with specific permissions.
-- **Project Management:** Create, edit, and manage projects. Invite team members.
-- **Task Management:** Create, assign, and track tasks across projects with statuses and priorities.
-- **Analytics Dashboard:** Visual overview of team productivity using Recharts.
-- **Modern UI:** Built with Tailwind CSS, ShadCN UI, and Framer Motion for a premium feel.
+## ✨ Features
 
-## Tech Stack
+- **🔐 Robust Authentication**: Secure JWT-based signup and login flow with encrypted passwords.
+- **📊 Real-time Dashboard**: Track project progress, task status distributions (To Do, In Progress, Completed), and overdue tasks at a glance.
+- **📁 Project Management**: Create and manage multiple projects, each with its own dedicated workspace.
+- **✅ Task Tracking**: Comprehensive task management with priority levels (Low, Medium, High), due dates, and assignees.
+- **👥 Team Collaboration**: Invite team members to specific projects via email and assign tasks directly to them.
+- **🎨 Premium UI/UX**: Fully responsive, dark-mode inspired design built with Tailwind CSS v4 and ShadCN UI.
+- **📱 Mobile Ready**: Optimized for all screen sizes with a responsive sidebar and mobile drawer.
 
-- **Frontend:** Next.js (App Router), React, TypeScript, Tailwind CSS, ShadCN UI, Zustand, React Query
-- **Backend:** Next.js API Routes, Node.js
-- **Database:** PostgreSQL, Prisma ORM
-- **Deployment:** Vercel (Frontend & API), Railway (Database)
+## 🛠️ Tech Stack
 
-## Local Development Setup
+- **Framework**: [Next.js 16 (App Router)](https://nextjs.org/)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Database**: [PostgreSQL](https://www.postgresql.org/)
+- **ORM**: [Prisma 7](https://www.prisma.io/)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+- **UI Components**: [ShadCN UI](https://ui.shadcn.com/) (Base UI version)
+- **State Management**: [Zustand](https://github.com/pmndrs/zustand)
+- **Data Fetching**: [TanStack Query v5](https://tanstack.com/query/latest)
+- **Icons**: [Lucide React](https://lucide.dev/)
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 18+ 
+- A PostgreSQL database (local or hosted)
+
+### Installation
 
 1. **Clone the repository:**
    ```bash
-   git clone <repo-url>
-   cd project
+   git clone https://github.com/satya-ctrl/Team-Tasker-SAAS.git
+   cd Team-Tasker-SAAS
    ```
 
 2. **Install dependencies:**
@@ -31,58 +46,45 @@ A powerful, collaborative task and project management platform built for modern 
    npm install
    ```
 
-3. **Environment Variables:**
+3. **Set up environment variables:**
    Create a `.env` file in the root directory:
    ```env
-   DATABASE_URL="postgresql://user:password@localhost:5432/teamtasker?schema=public"
-   JWT_SECRET="your-super-secret-key-change-me"
+   DATABASE_URL="your_postgresql_url"
+   JWT_SECRET="your_random_secret_key"
    ```
 
-4. **Database Setup:**
-   Make sure you have a PostgreSQL database running. Then run:
+4. **Initialize the database:**
    ```bash
    npx prisma db push
-   npm run prisma:seed
    ```
-   *(Note: The seed script creates an initial admin user: admin@example.com / admin123)*
 
 5. **Run the development server:**
    ```bash
    npm run dev
    ```
 
-## Deployment Steps (Railway + Vercel)
+6. **Open the app:**
+   Navigate to [http://localhost:3000](http://localhost:3000)
 
-1. **Database on Railway:**
-   - Go to [Railway](https://railway.app/) and create a new project.
-   - Add a "PostgreSQL" plugin.
-   - Copy the provided `DATABASE_URL`.
+## 🏗️ Project Structure
 
-2. **Application on Vercel:**
-   - Push your code to GitHub.
-   - Go to [Vercel](https://vercel.com/) and import your repository.
-   - Add the following Environment Variables in Vercel settings:
-     - `DATABASE_URL` (from Railway)
-     - `JWT_SECRET` (generate a random strong string)
-   - In the "Build & Development Settings", the default Next.js build command (`npm run build`) is fine. Ensure Prisma generates the client during build (you can add a `postinstall` script in `package.json`: `"postinstall": "prisma generate"`).
-   - Deploy!
+- `src/app`: Next.js App Router pages and API routes.
+- `src/components`: Reusable UI components and layout elements.
+- `src/lib`: Utility functions and database/auth configurations.
+- `src/store`: Global state management using Zustand.
+- `prisma/`: Database schema and seed scripts.
 
-## API Endpoints
+## 🚢 Deployment (Railway)
 
-- **Auth:**
-  - `POST /api/auth/signup`
-  - `POST /api/auth/login`
-  - `GET /api/auth/me`
-  - `POST /api/auth/logout`
+This project is optimized for deployment on [Railway](https://railway.app/):
 
-- **Projects:**
-  - `GET /api/projects`
-  - `POST /api/projects`
-  - `PUT /api/projects/:id`
-  - `DELETE /api/projects/:id`
+1. Connect your GitHub repository to a new Railway project.
+2. Provision a **PostgreSQL** service.
+3. In the Next.js service settings, add the following variables:
+   - `DATABASE_URL`: `${{Postgres.DATABASE_URL}}`
+   - `JWT_SECRET`: A secure random string.
+4. Railway will automatically run `npm run build` and `prisma generate` during deployment.
 
-- **Tasks:**
-  - `GET /api/tasks`
-  - `POST /api/tasks`
-  - `PUT /api/tasks/:id`
-  - `DELETE /api/tasks/:id`
+## 📄 License
+
+This project is licensed under the MIT License.
